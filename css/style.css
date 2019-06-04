@@ -1,0 +1,12 @@
+/* style.css */
+  
+  /* SCALABLE BACKGROUND TO FILL AVAILABLE VIEWPORT */
+  body{
+    background-color: #fcfcfc;
+    background: url('./img/carbon.jpg') center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    opacity: 2;
+  }
