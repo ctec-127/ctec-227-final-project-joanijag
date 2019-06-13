@@ -10,5 +10,5 @@ function db_connection(){
 	return $db;
 }
 
-// // connect to the database
-//     $db = db_connection();
+
+//  $db = db_connection();
