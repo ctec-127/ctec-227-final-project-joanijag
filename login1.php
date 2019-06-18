@@ -1,13 +1,7 @@
 <?php session_start();?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Login</title>
+<?php 
+$pageTitle = 'Log In';
+include_once('inc/header.php'); ?>
   <style>
 	  body {
   font-family: Arial, Helvetica, sans-serif;
@@ -17,28 +11,10 @@
   padding: 0;
 }
   </style>
-</head>
-<body>
-
-<header>
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-<nav class="navbar navbar-expand-lg nav-transparent">
-  <a class="navbar-brand" href="index1.php">Gearhead</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link " href="register1.php">Register</a>
-      </li>
-    </ul>
-    
-  </div>
-</nav>
-</header>
 
 <?php 
+
+require_once('inc/nav.php');
 require_once('db/mysqli_connect.php');
 $db = db_connection();    
 
@@ -53,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if ($result->num_rows == 1) {
     $row = $result->fetch_assoc();
     $_SESSION['userId'] = $row['userId'];
-    // $_SESSION['loggedin'] = 1;
+    $_SESSION['loggedin'] = 1;
     $_SESSION['email'] = $email;
     $_SESSION['firstName'] = $row['firstName'];
 
@@ -71,13 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       	<form action="login1.php" method="POST">
 			<div class="form-group my-2 my-lg-0">
             <label for="email">Email address</label>
-            <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email">
+            <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" value="<?php if(isset($_POST["email"])){echo $_POST["email"];} ?>">
 			 </div>
 			 <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password" value="<?php if(isset($_POST["password"])){echo $_POST["password"];} ?>">
           </div>
-          <!-- <button type="submit" class="btn btn-outline-warning btn-lg">Submit</button> -->
           <button type="submit" class="btn btn-primary btn-lg">Submit</button>
           <a class="nav-link register" href="register1.php">Register Here</a>
         </form>

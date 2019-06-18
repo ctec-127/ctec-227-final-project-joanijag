@@ -8,6 +8,7 @@ body {
   margin: 0;
   padding: 0;
   font-weight: 500;
+  /* color: rgb(58, 57, 57); */
   color: rgb(212, 209, 209);
 }
 label{
@@ -26,7 +27,7 @@ label{
 
 .modal-content{
   background-color: #33495e;
-  opacity: .75;
+  opacity: .85;
 }
 input{
   color:rgb(37, 35, 35);
@@ -36,7 +37,7 @@ input{
 }  */
 .post-form{
   background-color: #33495e;
-  opacity: .75;
+  opacity: .55;
   border-radius: 10px
 }
 /* .post{
@@ -80,9 +81,4 @@ input{
   padding: 20px;
 } 
 
- /* .login-start{
-  padding: 3rm 1.5rem;
-  text-align: center;
-}
- */
-
+ 

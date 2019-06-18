@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Register</title>
+<?php 
+$pageTitle = 'Register';
+include_once('inc/header.php'); ?>
   <style>
   body {
   font-family: Arial, Helvetica, sans-serif;
@@ -18,23 +12,9 @@
 </style>
 </head>
 <body>
-<header>
-<nav class="navbar navbar-expand-lg nav-transparent">
-  <a class="navbar-brand" href="index1.php">Gearhead</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link " href="login1.php">Login</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-</header>
 
 <?php 
+include_once('inc/nav.php');
 require_once('db/mysqli_connect.php');
 $db = db_connection();
 
@@ -42,7 +22,6 @@ $success = false;
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $required = array('email', 'password','firstName', 'lastName');
-
       // Loop over field names, make sure each one exists and is not empty
       $error = false;
       foreach($required as $field) {
@@ -50,15 +29,12 @@ $success = false;
           $error = true;
         }
       }
-    
       if ($error) {?>
         
         <div class="container">
           <div class="row">
             <div class="col-12 text-center">
               <h3>All fields are required</h3>
-        
-        
     <?php } else {
         $firstName = $db->real_escape_string($_POST['firstName']);
         $lastName = $db->real_escape_string($_POST['lastName']);
@@ -71,14 +47,12 @@ $success = false;
         $result = $db->query($sql);
       
         if($db->error){
-            echo "<h3>There was a problem registering your account. *** I will make this display using javaScript***</h3>";
+            echo "<h3>There was a problem registering your account. </h3>";
             echo '<h3>' . $db->error . '</h3>';
         } else { ?>
-
-            <h3>You are now ready to go! *** I will make this display using javaScript***</h3>
+            <h3>You are now ready to go!</h3>
             </div>
           </div>
-            
       <?php  $success = true;
       }
     }
